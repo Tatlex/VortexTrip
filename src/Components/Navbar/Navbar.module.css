@@ -1,0 +1,16 @@
+.nav {
+    grid-area: nav;
+    background-color: blueviolet;
+    padding: 30px;
+    text-align: center;
+}
+
+.item a {
+    color: white;
+    text-decoration: none; /*  removes underlines from links  */
+}
+
+/*  Class   .item a.activeLink  change the color of "on-clicked" NavLink buttons  */
+.item a.activeLink {
+    color: gold;
+}
