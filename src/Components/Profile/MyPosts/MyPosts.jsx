@@ -1,8 +1,7 @@
 import React from "react";
 import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {addPostActionCreator} from "../../../redux/profile-reduser";
-import {updateNewPostTextActionCreator} from "../../../redux/profile-reduser";
+
 
 
 const MyPosts = (props) => {
@@ -10,16 +9,13 @@ const MyPosts = (props) => {
 
     let newPostElement = React.createRef();        // Creating empty reference that takes different objects
 
-    let addPost = () => {
-        //  props.addPost();
-        props.dispatch(addPostActionCreator());
+    let onAddPost = () => {
+        props.addPost();
     }
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        //props.updateNewPostText(text);
-        let action = updateNewPostTextActionCreator(text);
-        props.dispatch(action);
+        props.updateNewPostText(text);
     }
 
     return <div className={classes.postsBlock}>
@@ -33,7 +29,7 @@ const MyPosts = (props) => {
                 */}
             </div>
             <div>
-                <button onClick={addPost}>Send</button>
+                <button onClick={onAddPost}>Send</button>
             </div>
         </div>
         <div className={classes.posts}>
