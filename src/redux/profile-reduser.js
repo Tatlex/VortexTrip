@@ -29,7 +29,7 @@ let initialState = {
          default:
              return state;
      }
-}
+ }
 
 
 export const addPostActionCreator = () => {    // Function that return action-object
