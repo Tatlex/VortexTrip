@@ -11,25 +11,32 @@ let initialState = {
     newPostText: 'Second chance'
 }
 
- const profileReducer = (state = initialState, action) => {
+const profileReducer = (state = initialState, action) => {
 
-     switch (action.type) {
-         case ADD_POST:
-             let newPost = {
-                 id: 6,
-                 message: state.newPostText,
-                 likesCount: 0
-             };
-             state.postData.push(newPost);
-             state.newPostText = '';
-             return state;
-         case UPDATE_NEW_POST_TEXT:
-             state.newPostText = action.newText;
-             return state;
-         default:
-             return state;
-     }
- }
+    switch (action.type) {
+        case ADD_POST:
+            let newPost = {
+                id: 6,
+                message: state.newPostText,
+                likesCount: 0
+            };
+            return {
+                ...state,
+                postData: [...state.postData, newPost],
+                newPostText: ''
+            };
+
+        case UPDATE_NEW_POST_TEXT: {
+            return {
+                ...state,
+                newPostText: action.newText,
+            };
+        }
+
+        default:
+            return state;
+    }
+}
 
 
 export const addPostActionCreator = () => {    // Function that return action-object

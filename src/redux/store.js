@@ -2,10 +2,6 @@ import profileReducer from "./profile-reduser";
 import dialogsReducer from "./dialogs-reduser";
 import sidebarReducer from "./sidebar-reduser";
 
-/*const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
-const SEND_MESSAGE = 'SEND-MESSAGE';*/
 
 let store = {
     _state: {
@@ -16,7 +12,7 @@ let store = {
                 {id: 3, message: "Abracadabra", likesCount: 34},
                 {id: 4, message: "What's up?", likesCount: 89},
             ],
-            newPostText: 'Second chance'
+            newPostText: 'Click "send" and try to post something'
         },
         dialogsPage: {
             dialogsData: [
