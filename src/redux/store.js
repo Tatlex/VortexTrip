@@ -44,7 +44,7 @@ let store = {
     dispatch(action) {
         // [action] - an object that describes what action to take,
         // and ALWAYS must have a "type" property
-        // example:  {type: 'ADD-POST'}
+        // example: {type: 'ADD-POST'}
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
         this._state.sidebar = sidebarReducer(this._state.sidebar);
