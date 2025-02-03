@@ -1,4 +1,16 @@
 .userPhoto {
-    width: 200px;
-    height: 100%;
+    width: 150px;
+    height: 90%;
+}
+
+.selectedPage {
+    font-weight: bolder;
+}
+
+.pagination{
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    margin: 70px;
+    padding: 70px;
 }
