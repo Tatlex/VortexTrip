@@ -1,9 +1,8 @@
 import {connect} from "react-redux";
 import {
-    followActionCreator,
+    followActionCreator, unfollowActionCreator,
     setCurrentPageActionCreator, setTotalUsersCountActionCreator,
     setUsersActionCreator, toggleIsFetchingActionCreator,
-    unfollowActionCreator
 } from "../../redux/users-reducer";
 import React from "react";
 import axios from "axios";
