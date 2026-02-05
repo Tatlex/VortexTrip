@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+
 const FOLLOW_USER = 'FOLLOW_USER';
 const UNFOLLOW_USER = 'UNFOLLOW_USER';
 const SET_USERS = 'SET_USERS';
@@ -71,12 +73,12 @@ const usersReducer = (state = initialState, action) => {
 }
 
 
-export const followActionCreator = (userId) => {
+export const followSuccessActionCreator = (userId) => {
     return {
         type: FOLLOW_USER, userId
     }
 }
-export const unfollowActionCreator = (userId) => {
+export const unfollowSuccessActionCreator = (userId) => {
     return {
         type: UNFOLLOW_USER, userId
     }
@@ -101,11 +103,46 @@ export const toggleIsFetchingActionCreator = (isFetching) => {
         type: TOGGLE_IS_FETCHING, isFetching
     }
 }
-    export const toggleFollowingProgressActionCreator = (isFetching, userId) => {
-        return {
-            type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId
-        }
+export const toggleFollowingProgressActionCreator = (isFetching, userId) => {
+    return {
+        type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId
     }
+}
 
+export const getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(setCurrentPageActionCreator(currentPage));
+        dispatch(toggleIsFetchingActionCreator(true));
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(toggleIsFetchingActionCreator(false));
+            dispatch(setUsersActionCreator(data.items));
+            dispatch(setTotalUsersCountActionCreator(data.totalCount));
+        });
+    }
+}
+
+export const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgressActionCreator(true, userId));
+        usersAPI.follow(userId).then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(followSuccessActionCreator(userId));
+                dispatch(toggleFollowingProgressActionCreator(false, userId));
+            }
+        });
+    }
+}
+
+export const unfollow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgressActionCreator(true, userId));
+        usersAPI.unfollow(userId).then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(unfollowSuccessActionCreator(userId));
+                dispatch(toggleFollowingProgressActionCreator(false, userId));
+            }
+        });
+    }
+}
 
 export default usersReducer;
