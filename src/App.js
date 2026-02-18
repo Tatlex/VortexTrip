@@ -2,6 +2,7 @@ import React from "react";
 import './index.css';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
+import LoginPage from "./Components/Login/Login";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import UsersContainer from "./Components/Users/UsersContainer";
@@ -23,6 +24,7 @@ function App() {
                         <Route path='/news' element={""}/>
                         <Route path='/music' element={""}/>
                         <Route path='/settings' element={""}/>
+                        <Route path='/login' element={<LoginPage />} />
                     </Routes>
                 </div>
             </div>
