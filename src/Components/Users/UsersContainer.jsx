@@ -5,6 +5,8 @@ import {
 import React from "react";
 import Users from "./Users";
 import Preloader from "../common/Preloader";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 class UsersContainer extends React.Component {
@@ -59,4 +61,7 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default compose(
+    withAuthRedirect,
+    connect(mapStateToProps, mapDispatchToProps),
+)(UsersContainer);
