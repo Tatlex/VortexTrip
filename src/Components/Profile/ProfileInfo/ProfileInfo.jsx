@@ -1,11 +1,13 @@
 import React from "react";
 import classes from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader";
+import ProfileStatus from "./ProfileStatus";
+
 
 const ProfileInfo = (props) => {
 
     if (!props.profile) {
-        return <Preloader />;
+        return <Preloader/>;
     }
 
     return (
@@ -18,6 +20,7 @@ const ProfileInfo = (props) => {
             <div className={classes.descriptionBlock}>
                 <img src={props.profile.photos.large} alt="Loading error"/>
                 avatar + description
+                <ProfileStatus status="Be patience"/>
             </div>
         </div>
     )
